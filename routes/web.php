@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//网站首页
+Route::get('/','HomeController@index')->name('home');
 
-Route::resource('edu/article','Edu\ArticleController');
+//注册页
+Route::get('/login','UserController@login')->name('login');
+//用户注册数据
+Route::post('/loginpost','UserController@loginpost')->name('loginpost');
+
+
+//工具类
+Route::any('/code/send','Util\CodeController@send')->name('code.send');
+
