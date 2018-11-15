@@ -27,4 +27,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getIconAttribute($key){
+        return $key?:asset('org/assets/img/covers/2.jfif');
+    }
 }

@@ -1,4 +1,5 @@
 @component('mail::message')
+    {{--消息通知  自定义模板--}}
     {{-- Greeting --}}
     @if (! empty($greeting))
         # {{ $greeting }}
@@ -6,7 +7,7 @@
         @if ($level === 'error')
             # @lang('Whoops!')
         @else
-            # @lang('Hello!')
+            # @lang('你好!')
         @endif
     @endif
 

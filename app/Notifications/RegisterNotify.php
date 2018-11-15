@@ -47,8 +47,8 @@ class RegisterNotify extends Notification
 //                    ->action('Notification Action', url('/'))
 //                    ->line('Thank you for using our application!');
         return ( new MailMessage )
-            ->subject( '后盾人注册验证' )//邮件主题
-            ->line( '感谢您注册后盾人，您的验证码为：' . $this->code );
+            ->subject( '桀骜邮箱验证' )//邮件主题
+            ->line( '您的验证码为：' . $this->code );
     }
 
     /**

@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
-
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/assets')}}/css/theme.min.css">
-    <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Dashkit</title>
+    <title>登录</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
 
@@ -27,26 +25,18 @@
 
             <!-- Heading -->
             <h1 class="display-4 text-center mb-3">
-                注册
+                登录
             </h1>
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-                注册帐号参与交流与学习
+                登录帐号参与社区交流与学习
             </p>
 
             <!-- Form -->
-            <form method="post" action="{{route('loginpost')}}">
+            <form method="post" action="{{route('registerpost')}}">
             @csrf
             <!-- Email address -->
-                <div class="form-group">
-                    <!-- Label -->
-                    <label>
-                        昵称
-                    </label>
-                    <!-- Input -->
-                    <input type="text" class="form-control" placeholder="请输入个性昵称" name="name">
-                </div>
 
                 <div class="form-group">
                     <!-- Label -->
@@ -67,38 +57,15 @@
                     <input type="password" name="password" class="form-control" placeholder="请输入你的密码">
                 </div>
 
-                <div class="form-group">
-                    <!-- Label -->
-                    <label>
-                        确认密码
-                    </label>
-                    <!-- Input -->
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="请输入你的密码">
-                </div>
-
-                <div class="form-group">
-                    <!-- Label -->
-                    <label>
-                        验证码
-                    </label>
-                    <!-- Input -->
-                    <div class="input-group mb-3">
-                        <input class="form-control" type="text" name="code" value="" placeholder="请输入你的验证码">
-                        <span class="input-group-append">
-                            <button class="btn btn-default" type="button" id="bt">发送验证码</button>
-                        </span>
-                    </div>
-                </div>
-
                 <!-- Submit -->
                 <button class="btn btn-lg btn-block btn-primary mb-3">
-                    注册
+                    登录
                 </button>
-
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                        如果已有账号? <a href="{{route('register')}}">去登陆</a>.
+                        还没有账号? <a href="{{route('login')}}">去注册</a>.
+                        <a href="{{route('passwordreplace')}}">忘记密码</a>
                         <a href="{{route('home')}}">返回首页</a>
                     </small>
                 </div>
@@ -110,17 +77,13 @@
 
             <!-- Image -->
             <div class="bg-cover vh-100 mt--1 mr--3"
-                 style="background-image: url({{asset('org/assets')}}/img/covers/auth-side-cover.jpg);"></div>
+                 style="background-image: url({{asset('org/assets')}}/img/covers/0.jpg);background-size: 600px">
+
+            </div>
 
         </div>
-    </div> <!-- / .row -->
+    </div>
 </div>
-
-<!-- JAVASCRIPT
-================================================== -->
-
-
-<!-- Theme JS -->
 @include('layouts.hdjs')
 @include('layouts.message')
 <script>

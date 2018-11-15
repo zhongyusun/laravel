@@ -16,7 +16,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/assets')}}/css/theme.min.css">
 
-    <title>Dashkit</title>
+    <title>桀骜</title>
 </head>
 <body>
 
@@ -526,19 +526,25 @@
 
             <!-- 头像Dropdown -->
             <div class="dropdown">
-                {{--<!-- Toggle -->--}}
-                {{--<a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                    {{--<img src="{{asset('org/assets')}}/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">--}}
-                {{--</a>--}}
-                {{--<!-- Menu -->--}}
-                {{--<div class="dropdown-menu dropdown-menu-right">--}}
-                    {{--<a href="profile-posts.html" class="dropdown-item">Profile</a>--}}
-                    {{--<a href="settings.html" class="dropdown-item">Settings</a>--}}
-                    {{--<hr class="dropdown-divider">--}}
-                    {{--<a href="sign-in.html" class="dropdown-item">Logout</a>--}}
-                {{--</div>--}}
-                <a href="" class="btn btn-white btn-sm">登录</a>
+                <!-- Toggle -->
+                @auth()
+                <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    <img src="{{auth()->user()->icon}}" alt="..." class="avatar-img rounded-circle">
+                </a>
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="" class="dropdown-item">{{auth()->user()->name}}的主页</a>
+                    @if(auth()->user()->is_admin==1)
+                    <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
+                    @endif
+                    <hr class="dropdown-divider">
+                    <a href="{{route('registerout')}}" class="dropdown-item">退出</a>
+                </div>
+                @else
+                <a href="{{route('register')}}" class="btn btn-white btn-sm">登录</a>
                 <a href="{{route('login')}}" class="btn btn-white btn-sm">注册</a>
+                @endauth
             </div>
 
         </div>
@@ -1637,3 +1643,4 @@
 
 </body>
 </html>
+
