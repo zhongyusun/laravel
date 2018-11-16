@@ -535,6 +535,7 @@
                 <!-- Menu -->
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="" class="dropdown-item">{{auth()->user()->name}}的主页</a>
+                    <a href="" class="dropdown-item">设置</a>
                     @if(auth()->user()->is_admin==1)
                     <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
                     @endif
@@ -560,8 +561,8 @@
             <!-- Navigation -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        Dashboard
+                    <a class="nav-link" href="{{route('home')}}">
+                        首页
                     </a>
                 </li>
                 <li class="nav-item dropdown">

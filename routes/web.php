@@ -12,7 +12,7 @@
 */
 
 //网站首页
-Route::get('/','HomeController@index')->name('home');
+Route::get('/','Home\HomeController@index')->name('home');
 
 //注册页
 Route::get('/login','UserController@login')->name('login');

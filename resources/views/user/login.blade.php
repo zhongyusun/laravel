@@ -15,7 +15,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/assets')}}/css/theme.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Dashkit</title>
+    <title>注册</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
 
