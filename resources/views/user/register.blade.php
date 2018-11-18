@@ -56,9 +56,12 @@
                     <!-- Input -->
                     <input type="password" name="password" class="form-control" placeholder="请输入你的密码">
                 </div>
-
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="remember" id="remember" value="1">
+                    <label class="form-check-label" for="remember">记住我</label>
+                </div>
                 <!-- Submit -->
-                <button class="btn btn-lg btn-block btn-primary mb-3">
+                <button class="mt-3 btn btn-lg btn-block btn-primary mb-3">
                     登录
                 </button>
                 <!-- Link -->

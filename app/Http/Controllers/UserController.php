@@ -27,6 +27,7 @@ class UserController extends Controller
 
     //处理登录数据
     public function registerpost(Request $request){
+        //dd($request->remember);
         //验证登录
         $this->validate($request,[
             'email'=>'email',
@@ -39,7 +40,7 @@ class UserController extends Controller
         //执行登陆，手册：用户认证/手动用户验证
         $credentials = $request->only('email', 'password');
         //dd($credentials);
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials,$request->remember)) {
             // Authentication passed...
             //登录成功跳回首页
             return redirect()->route('home');
