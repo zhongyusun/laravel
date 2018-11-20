@@ -15,9 +15,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->default('')->comment('标题');
-            $table->string('writer')->default('未知')->comment('作者');
-            $table->string('content')->default('作者已删除')->comment('内容');
+            $table->string('title')->default('')->comment('栏目标题');
+            $table->string('icon')->default('')->comment('栏目字体');
             $table->timestamps();
         });
     }

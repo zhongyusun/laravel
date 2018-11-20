@@ -11,8 +11,21 @@
 |
 */
 
-//网站首页
+//网站首页Route::get('/','Home\HomeController@index')->name('home');
 Route::get('/','Home\HomeController@index')->name('home');
+
+
+////前台路由组
+Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
+//    //加载前台页面
+    Route::get('/','HomeController@index')->name('home');
+//    //创建模型同时创建迁移文件和工厂
+//    //artisan make:model --migration --factory Models/Artcle
+//    //创建控制器指定模型
+//    //artisan make:controller --model=Models/Category Home/ArtcleController
+    Route::resource('article','ArticleController');
+});
+
 
 //注册页
 Route::get('/login','UserController@login')->name('login');
