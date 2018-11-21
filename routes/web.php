@@ -27,6 +27,14 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
 });
 
 
+//会员中心路由组
+Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function (){
+    //加载用户管理页面
+    Route::resource('user','UserController');
+});
+
+
+
 //注册页
 Route::get('/login','UserController@login')->name('login');
 //用户注册数据
@@ -42,8 +50,20 @@ Route::get('/passwordreplace','UserController@passwordreplace')->name('passwordr
 //密码数据
 Route::post('/passwordpost','UserController@passwordpost')->name('passwordpost');
 
-//工具类
-Route::any('/code/send','Util\CodeController@send')->name('code.send');
+
+//工具路由组
+Route::group(['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function (){
+    //验证码
+    Route::any('/code/send','CodeController@send')->name('code.send');
+    //上传
+    Route::any('/upload','UploadController@upload')->name('upload');
+    //处理图片
+    Route::any('/filesLists','UploadController@filesLists')->name('filesLists');
+});
+
+
+
+
 
 //后台路径  middleware:中间件  prefix：前缀  namespace:命名空间   as：别名
 Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin','as'=>'admin.'],function(){

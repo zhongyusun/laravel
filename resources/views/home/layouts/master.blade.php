@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Libs CSS -->
 
     <link rel="stylesheet" href="{{asset('org/assets')}}/fonts/feather/feather.min.css">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </form>
-        <div>aria-haspopup
+        <div>
             <a href="{{route('home.article.create')}}">
                   <span class="icon">
                     <i class="fe fe-edit-3"></i>
@@ -339,7 +339,7 @@
                     </a>
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="" class="dropdown-item">{{auth()->user()->name}}的主页</a>
+                        <a href="{{route('member.user.show',auth()->user())}}" class="dropdown-item">{{auth()->user()->name}}个人中心</a>
                         <a href="" class="dropdown-item">设置</a>
                         @can('view',auth()->user())
                             {{--参数一：那个方法  二：类--}}
@@ -366,6 +366,11 @@
 
             <!-- Navigation -->
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('home.home')}}">
+                        首页
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('home.article.index')}}">
                         文章列表

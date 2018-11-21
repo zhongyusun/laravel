@@ -27,17 +27,15 @@
 
                                         <!-- Toggle -->
                                         <a href="#!" class="small text-muted dropdown-toggle" data-toggle="dropdown">
-                                            Sort order
+                                            文章分类
                                         </a>
-
                                         <!-- Menu -->
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item sort" data-sort="name" href="#!">
-                                                Asc
+                                            @foreach($categories as $category)
+                                            <a class="dropdown-item sort" data-sort="name" href="{{route('home.article.index',['category'=>$category['id']])}}">
+                                                {{$category->title}}
                                             </a>
-                                            <a class="dropdown-item sort" data-sort="name" href="#!">
-                                                Desc
-                                            </a>
+                                            @endforeach
                                         </div>
 
                                     </div>
@@ -63,7 +61,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <a href="" class="avatar avatar-sm">
+                                                <a href="{{route('member.user.show',$article->user)}}" class="avatar avatar-sm">
                                                     <img src="{{$article->user->icon}}" alt="..." class="avatar-img rounded">
                                                 </a>
 
@@ -72,11 +70,11 @@
 
                                                 <!-- Title -->
                                                 <h4 class="card-title mb-1 name">
-                                                    <a href="">{{$article->title}}</a>
+                                                    <a href="{{route('home.article.show',$article)}}">{{$article->title}}</a>
                                                 </h4>
 
                                                 <p class="card-text small mb-1">
-                                                    <a href="" class="text-secondary mr-2">
+                                                    <a href="{{route('member.user.show',$article->user)}}" class="text-secondary mr-2">
                                                         <i class="fa fa-user-circle" aria-hidden="true"></i>
                                                         {{$article->user->name}}
                                                     </a>
@@ -105,14 +103,14 @@
                                                                 编辑
                                                             </a>
                                                         @endcan
-
+                                                        @can('delete',$article)
                                                             <a href="javascript:;" onclick="del(this)" class="dropdown-item">
                                                                 删除
                                                             </a>
+                                                        @endcan
                                                             <form action="{{route('home.article.destroy',$article)}}" method="post">
                                                               @csrf  @method('DELETE')
                                                             </form>
-
                                                     </div>
                                                 </div>
 
@@ -122,8 +120,8 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            {{$articles->links()}}
                         </div>
+                        {{$articles->links()}}
                     </div>
 
                 </div>

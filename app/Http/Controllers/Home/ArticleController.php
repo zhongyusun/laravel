@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 use App\Models\Article;
 use App\Models\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,7 +23,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user,Request $request)
     {
         //测试关联模型
         //$articles=Artcle::find(2);
@@ -34,13 +35,23 @@ class ArticleController extends Controller
         //dd($articles->category->article);
         //dd($articles->category->article->toArray);
         //测试策略
-        $data=Article::find(10);
-
-//        dd($data->user);
-        //按照日期较晚来排序，分页，一页十个
-        $articles=Article::latest()->paginate(10);
-        //dd($articles->toArray());
-        return view('home.article.index',compact('articles','data'));
+        //$data=Article::find(10);
+        //dd($data->user);
+        //接受category参数
+        //query查找
+        $category=$request->query('category');
+        //dd($category);
+        $articles=Article::latest();
+        if ($category){
+            $articles=$articles->where('category_id',$category);
+        }
+        //每一页十条数据  按照日期较晚来排序，分页，一页十个
+       // $articles=Article::latest()->paginate(10);
+        $articles=$articles->paginate(10);
+        //获取所有的文章分类
+        //$categories = Category::limit(3)->get();
+        $categories=Category::all();
+        return view('home.article.index',compact('articles','user','categories'));
     }
 
     /**
