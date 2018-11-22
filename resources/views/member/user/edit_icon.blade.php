@@ -32,6 +32,7 @@
     {{--hdjs里面上传需要再控制台--network中检测数据--}}
     {{--处理上传之前需要创建处理上传控制器方法、配置对应的路由--}}
     {{--需要修改hdjs上传配置项：hdjs.blade.php--}}
+    {{--需要修改hdjs上传配置项：hdjs.blade.php--}}
     {{--还需要注意上传419状态码--}}
     <script>
         require(['hdjs','bootstrap']);
@@ -44,17 +45,18 @@
                     data: {name: '后盾人', year: 2099},
                 };
                 hdjs.image(function (images) {
-                    alert(1);
+                    //alert('上传成功')
+                    //将返回的图片路径写入到input表单的val值
+                    //提交表单做头像修改
                     //上传成功的图片，数组类型
-                    // $("[name='thumb']").val(images[0]);
-                    // $(".img-thumbnail").attr('src', images[0]);
+                    //alert(images);
+                    $("[name='icon']").val(images[0]);
+                    //将上传返回的图片写入avatar-img元素的src
+                    $(".avatar-img").attr('src', images[0]);
+                    //触发表单提交
+                    $('#editIocn').submit();
                 }, options)
             });
-        }
-        //移除图片
-        function removeImg(obj) {
-            $(obj).prev('img').attr('src', '../dist/static/image/nopic.jpg');
-            $(obj).parent().prev().find('input').val('');
         }
     </script>
 @endpush

@@ -4,7 +4,7 @@
         //组件目录必须绝对路径
         base : '{{asset('org/hdjs')}}',
         //上传文件后台地址
-        uploader : '{{route('util.upload')}}?',
+        uploader : '{{route('util.uploader')}}?',
         //获取文件列表的后台地址
         filesLists : '{{route('util.filesLists')}}?',
         //require.js配置项（可为空）

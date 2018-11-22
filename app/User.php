@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Attachment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','icon'
     ];
 
     /**
@@ -30,5 +31,20 @@ class User extends Authenticatable
 
     public function getIconAttribute($key){
         return $key?:asset('org/assets/img/covers/2.jfif');
+    }
+
+    //关联附件
+    public function attachment(){
+        return $this->hasMany(Attachment::class);
+    }
+
+    //获取指定用户粉丝
+    public function fans(){
+        return $this->belongsToMany(User::class,'follows','user_id','following_id');
+    }
+
+    //获取关注者
+    public function following(){
+        return $this->belongsToMany(User::class,'follows','following_id','user_id');
     }
 }

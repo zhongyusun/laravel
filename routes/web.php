@@ -31,6 +31,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
 Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function (){
     //加载用户管理页面
     Route::resource('user','UserController');
+    //定义取消关注和关注
+    Route::get('attention/{user}','UserController@attention')->name('attention');
 });
 
 
@@ -56,7 +58,7 @@ Route::group(['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function (){
     //验证码
     Route::any('/code/send','CodeController@send')->name('code.send');
     //上传
-    Route::any('/upload','UploadController@upload')->name('upload');
+    Route::any('/uploader','UploadController@uploader')->name('uploader');
     //处理图片
     Route::any('/filesLists','UploadController@filesLists')->name('filesLists');
 });
