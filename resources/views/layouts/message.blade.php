@@ -10,9 +10,6 @@
     })
     @endif
 </script>
-
-
-
 <script>
     @if (session()->has('success'))
     require(['hdjs'], function (hdjs) {
@@ -24,8 +21,7 @@
     })
     @endif
 </script>
-
-{{--手册表单验证，搜索errors--}}
+{{--laravel手册表单验证，搜索errors--}}
 <script>
     @if ($errors->any())
     require(['hdjs'], function (hdjs) {

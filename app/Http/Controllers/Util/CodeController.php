@@ -23,7 +23,7 @@ class CodeController extends Controller
         //dd($user);
         //dd($user->toarray());
         //需要创建通知类：(消息通知）
-        $user->notify(new RegisterNotify($code));
+            $user->notify(new RegisterNotify($code));
 
         //将验证码存进session中
         session()->put('code',$code);

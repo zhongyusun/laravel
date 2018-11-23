@@ -349,7 +349,7 @@
                         <a href="{{route('registerout')}}" class="dropdown-item">退出</a>
                     </div>
                 @else
-                    <a href="{{route('register')}}" class="btn btn-white btn-sm">登录</a>
+                    <a href="{{route('register',['from'=>url()->full()])}}" class="btn btn-white btn-sm">登录</a>
                     <a href="{{route('login')}}" class="btn btn-white btn-sm">注册</a>
                 @endauth
             </div>

@@ -19,8 +19,9 @@
                             <span class="help-block text-muted small">请上传 200X200 像素并小于200KB的JPG图片</span>
                         </div>
                     </div>
-                    <form action="{{route('member.user.update',$user)}}" method="post" class="col-sm-8" id="form-icon">
+                    <form id="editIocn" action="{{route('member.user.update',$user)}}" method="post" class="col-sm-8" id="form-icon">
                         @csrf @method('PUT')
+                        <input type="text" hidden name="icon" value="{{$user->icon}}">
                     </form>
                 </div>
             </div>

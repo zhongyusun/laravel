@@ -95,9 +95,10 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Article $article,Request $request)
     {
-        return view('home.article.show',compact('article'));
+        $category=$request->query('category');
+        return view('home.article.show',compact('article','category'));
     }
 
     /**

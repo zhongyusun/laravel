@@ -14,7 +14,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth',[
-            'only'=>['show','edit','update']
+            'only'=>['edit','update','attention']
         ]);
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
         $this->validate($request,[
             'password' =>'sometimes|required|min:3|confirmed',
             'name'=>'sometimes|required',
-            'icon'=>'sometime'
+            'icon'=>'sometimes'
         ],[
             'password.required'=>'密码不能为空',
             'password.min'=>'密码最小长度不能低于3个字符',
@@ -126,8 +126,28 @@ class UserController extends Controller
     // 关注  取消关注
     //这里user 被关注者
     public function attention(User $user){
+        //自己不能关注自己
+        $this->authorize('isNotMine',$user);
         //dd(1);
+        //dd(auth()->user());
         auth()->user()->following()->toggle($user);
         return back();
+    }
+
+    //用户的粉丝
+    public function myFens(User $user){
+        //获取所有的粉丝
+        $fans=$user->fans()->paginate(10);
+        //dd($fans->toArray());
+        //加载模板页面
+        return view('member.user.my_fans',compact('fans','user'));
+    }
+
+    //我的关注
+    public function myFollowing(User $user){
+        //获取所有的粉丝
+        $followings=$user->fans()->paginate(10);
+        //加载模板页面
+        return view('member.user.my_following',compact('followings','user'));
     }
 }

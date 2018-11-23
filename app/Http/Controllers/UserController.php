@@ -19,8 +19,9 @@ class UserController extends Controller
     }
 
     //加载登录模板
-    public function register(){
+    public function register(Request $request){
         //dd(111);
+        //dd($request->all());
          return view('user.register');
     }
 
@@ -29,6 +30,7 @@ class UserController extends Controller
     public function registerpost(Request $request){
         //dd($request->remember);
         //验证登录
+       // dd($request->from);
         $this->validate($request,[
             'email'=>'email',
             'password'=>'required|min:3'
@@ -43,7 +45,8 @@ class UserController extends Controller
         if (Auth::attempt($credentials,$request->remember)) {
             // Authentication passed...
             //登录成功跳回首页
-            return redirect()->route('home');
+            //return redirect($request->from)->with('success','登陆成功');
+            return redirect($request->from);
         }
         return redirect()->route('register')->with('danger','密码或用户名不正确');
     }

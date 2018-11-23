@@ -53,6 +53,7 @@ class UploadController extends Controller
         if ($file->getSize()>200000){
             //return  ['message' =>'上传文件过大', 'code' => 403];
             //使用异常类处理上传异常
+            //在laravels手册错误处理Renfer方法
             //创建异常类:exception
             throw new UploadException('上传文件过大');
         }
@@ -60,7 +61,7 @@ class UploadController extends Controller
 
     //验证图片类型
     public function checkType($file){
-        if (in_array(strtolower($file->getClientOriginalName()),['png','jpg','jpeg'])){
+        if (!in_array(strtolower($file->getClientOriginalName()),['png','jpg','jpeg'])){
             //return  ['message' =>'类型不允许', 'code' => 403];
             throw new UploadException('上传类型不允许');
         };

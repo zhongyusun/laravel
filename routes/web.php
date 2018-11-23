@@ -33,6 +33,10 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
     Route::resource('user','UserController');
     //定义取消关注和关注
     Route::get('attention/{user}','UserController@attention')->name('attention');
+    //粉丝页面
+    Route::get('my_fans/{user}','UserController@myFens')->name('my_fans');
+    //关注页面
+    Route::get('my_following/{user}','UserController@myFollowing')->name('my_following');
 });
 
 
@@ -57,6 +61,9 @@ Route::post('/passwordpost','UserController@passwordpost')->name('passwordpost')
 Route::group(['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function (){
     //验证码
     Route::any('/code/send','CodeController@send')->name('code.send');
+    //1.创建上传类，测试图片是否正常上传
+    //2.创建附件模型和迁移文件，在user.php里面关联附件
+    //3.将图片上传到数据表
     //上传
     Route::any('/uploader','UploadController@uploader')->name('uploader');
     //处理图片
