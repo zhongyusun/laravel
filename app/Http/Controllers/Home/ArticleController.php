@@ -95,10 +95,15 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article,Request $request)
+    public function show(Article $article)
     {
-        $category=$request->query('category');
-        return view('home.article.show',compact('article','category'));
+        //dd($article->with('user')->where('id',$article->id)->first()->toArray());
+        //协助测试获取粉丝/关注的人
+        //$user = User::find(22);
+        //dd($user->fans);
+        $user = User::find(1);
+        //dd($user->following->toArray());
+        return view('home.article.show',compact('article'));
     }
 
     /**
@@ -126,6 +131,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+        $this->authorize('update',$article);
         $article->title = $request->title;
         $article->category_id = $request->category_id;
         $article->content = $request->content;
@@ -143,6 +149,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        $this->authorize('update',$article);
         $article->delete();
         return redirect()->route('home.article.index')->with('success','文章删除成功');
     }

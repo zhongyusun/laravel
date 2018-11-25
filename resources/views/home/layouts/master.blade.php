@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
-
+    <meta name="csrf-token" content="{{csrf_token()}}">
     {{--引入字体库--}}
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/assets')}}/css/theme.min.css">
-
+    @stack('css')
     <title>桀骜</title>
 </head>
 <body>
@@ -457,5 +457,6 @@
     require(['bootstrap'])
 </script>
 @stack('js')
+@stack('css')
 </body>
 </html>

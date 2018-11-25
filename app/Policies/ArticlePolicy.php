@@ -42,6 +42,9 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article)
     {
+        //dd($user);//当前登录用户
+        //传递进来的模型
+        //dd($article);
         return $article->user_id==$user->id ||$user->is_admin==1;
     }
 

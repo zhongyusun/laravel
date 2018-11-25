@@ -46,7 +46,11 @@ class UserController extends Controller
             // Authentication passed...
             //登录成功跳回首页
             //return redirect($request->from)->with('success','登陆成功');
-            return redirect($request->from);
+            if ($request->from){
+                return redirect($request->from);
+            }else{
+                return redirect()->route('home.home')->with('success','登录成功');
+            }
         }
         return redirect()->route('register')->with('danger','密码或用户名不正确');
     }

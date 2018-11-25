@@ -6,6 +6,7 @@
                     <img src="{{$user->icon}}" class="avatar-img rounded-circle">
                 </a>
             </div>
+            @if(auth()->user())
             @can('isNotMine',$user)
             {{--@auth()--}}
             <div class="card-footer text-muted mt-3">
@@ -19,6 +20,13 @@
             </div>
             {{--@endauth--}}
             @endcan
+            @else
+                <div class="card-footer text-muted mt-3">
+                <a class="btn btn-white btn-block btn-xs" href="{{route('member.attention',$user)}}">
+                        <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
+                </a>
+                </div>
+            @endif
             <div class="text-center mt-4">
                 <a href="#!">
                     <h3 class="text-secondary">{{$user->name}}</h3>
@@ -79,7 +87,7 @@
 @push('css')
     <style>
         .active{
-            color:white!important;
+            color: white !important;
         }
     </style>
 @endpush

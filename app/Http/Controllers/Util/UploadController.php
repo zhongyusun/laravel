@@ -61,7 +61,7 @@ class UploadController extends Controller
 
     //验证图片类型
     public function checkType($file){
-        if (!in_array(strtolower($file->getClientOriginalName()),['png','jpg','jpeg'])){
+        if (in_array(strtolower($file->getClientOriginalName()),['png','jpg','jpeg'])){
             //return  ['message' =>'类型不允许', 'code' => 403];
             throw new UploadException('上传类型不允许');
         };

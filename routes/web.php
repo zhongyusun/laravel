@@ -23,7 +23,10 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
 //    //artisan make:model --migration --factory Models/Artcle
 //    //创建控制器指定模型
 //    //artisan make:controller --model=Models/Category Home/ArtcleController
+    //加载文章类
     Route::resource('article','ArticleController');
+    //加载评论
+    Route::resource('comment','CommentController');
 });
 
 
