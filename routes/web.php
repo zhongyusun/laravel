@@ -27,6 +27,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
     Route::resource('article','ArticleController');
     //加载评论
     Route::resource('comment','CommentController');
+    //收藏
+    Route::get('collect/make','CollectController@make')->name('collect/make');
 });
 
 

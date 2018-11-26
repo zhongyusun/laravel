@@ -7,8 +7,13 @@
                 <div class="card card-body p-5">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="" class="btn btn-xs">
-                                <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a>
+                            @if($article->collect->where('user_id',auth()->id())->first())
+                                <a href="{{route('home.collect/make',['type'=>'article','id'=>$article['id']])}}" class="btn btn-xs">
+                                    <i class="fa fa-heart-o" aria-hidden="ture"></i> 取消收藏</a>
+                            @else
+                                <a href="{{route('home.collect/make',['type'=>'article','id'=>$article['id']])}}" class="btn btn-xs">
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
@@ -87,6 +92,6 @@
                     hljs.highlightBlock(block);
                 });
             });
-        })
+        });
     </script>
 @endpush

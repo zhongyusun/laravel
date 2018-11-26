@@ -86,7 +86,8 @@
                     comments: [],//全部评论
                 },
                 methods:{
-//提交评论
+                    @auth()
+                    //提交评论
                     send() {
                         //评论不能为空
                         if (this.comment.content.trim() == '') {
@@ -106,7 +107,10 @@
                             this.comments.push(response.data.comment);
                             //将 markdown 转为 html
                             let md = new MarkdownIt();
-                            response.data.comment.content = md.render(response.data.comment.content)
+                            //渲染评论内容并赋值回去
+                            response.data.comment.content = md.render(response.data.comment.content);
+
+                            //代码高亮
                             $(document).ready(function () {
                                 $('pre code').each(function (i, block) {
                                     hljs.highlightBlock(block);
@@ -121,8 +125,11 @@
                             editormd.replaceSelection("");
                         })
                     },
+                    @endauth
                 },
+
                 mounted(){
+                    @auth()
                     //渲染编辑器
                     hdjs.editormd("editormd", {
                         width: '100%',
@@ -146,17 +153,22 @@
                             vm.$set(vm.comment, 'content', this.getValue());
                         }
                     });
+                    @endauth
                     //请求当前文章所有评论数据
                     axios.get('{{route("home.comment.index",['article_id'=>$article['id']])}}')
+                        //接受后台返回的数据并展示
                         .then((response) => {
                             //console.log(response.data.comments)
                             this.comments = response.data.comment;
                             //console.log(this.comments);
+                            //将 markdown 转为 html
                             let md = new MarkdownIt();
                             //console.log(this.comments);
                             this.comments.forEach((v, k) => {
                                 v.content = md.render(v.content)
                             })
+                            //console.log(this.comments);
+                            //代码高亮
                             $(document).ready(function () {
                                 $('pre code').each(function (i, block) {
                                     hljs.highlightBlock(block);

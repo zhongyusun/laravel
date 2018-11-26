@@ -17,4 +17,9 @@ class Article extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+    //定义关注的多态关联
+    public function collect(){
+        //第一个参数关联模型,第二个参数跟数据迁移  collect_id  collect_type
+        return $this->morphMany(Collect::class,'collect');
+    }
 }
