@@ -31,6 +31,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
     Route::get('collect/make','CollectController@make')->name('collect/make');
     //点赞
     Route::get('like/make','LikeController@make')->name('like/make');
+    Route::get('search/search','HomeController@search')->name('search');
 });
 
 

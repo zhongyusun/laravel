@@ -1,7 +1,7 @@
 <div class="card" id="app">
     <div class="card-body">
         <!-- Comments -->
-        <div class="comment mb-3" v-for="v in comments">
+        <div class="comment mb-3" v-for="v in comments" :id="'comment'+v.id">
             <div class="row">
                 <div class="col-auto">
                     <!-- Avatar -->
@@ -86,6 +86,18 @@
                     comment: {content: ''},//当前评论数据
                     comments: [],//全部评论
                 },
+                updated(){
+                    //代码高亮
+                    $(document).ready(function () {
+                        $('pre code').each(function (i, block) {
+                            hljs.highlightBlock(block);
+                        });
+                    });
+                    //滚动页面
+                    //alert(location.hash);
+                    //http://demos.flesler.com/jquery/scrollTo/
+                    hdjs.scrollTo('body',location.hash,500, {queue:true});
+                },
                 methods:{
                     @auth()
                     //提交评论
@@ -111,12 +123,7 @@
                             //渲染评论内容并赋值回去
                             response.data.comment.content = md.render(response.data.comment.content);
 
-                            //代码高亮
-                            $(document).ready(function () {
-                                $('pre code').each(function (i, block) {
-                                    hljs.highlightBlock(block);
-                                });
-                            });
+
                             //清空 vue 数据
                             this.comment.content = '';
                             //清空编辑器内容
@@ -179,12 +186,7 @@
                                 v.content = md.render(v.content)
                             });
                             //console.log(this.comments);
-                            //代码高亮
-                            $(document).ready(function () {
-                                $('pre code').each(function (i, block) {
-                                    hljs.highlightBlock(block);
-                                });
-                            });
+
                         });
                 }
             });

@@ -18,8 +18,9 @@ class CommentObserver
         //具体评论数据
         //dd($comments);
         //发送通知
-        $comments->article->user->notify(new CommentNotify($comments));
-
+        if ($comments->article->user->id != auth()->id()){
+            $comments->article->user->notify(new CommentNotify($comments));
+        }
     }
 
     /**

@@ -86,7 +86,7 @@ class ArticleController extends Controller
         $article->user_id=auth()->id();
         //dd($artcle);
         $article->save();
-        return redirect()->route('home.artcle.index')->with('success','文章发布成功');
+        return redirect()->route('home.article.index')->with('success','文章发布成功');
     }
 
     /**
@@ -138,7 +138,7 @@ class ArticleController extends Controller
         // 防止作者被更改
         //$article->user_id = auth()->id();
         $article->save();
-        return redirect()->route('home.artcle.index')->with('success','文章编辑成功');
+        return redirect()->route('home.article.index')->with('success','文章编辑成功');
     }
 
     /**

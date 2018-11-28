@@ -58,6 +58,8 @@ class CommentNotify extends Notification
      * 在个人中心创建我的消息页面，创建相应的消息控制类，配置路由
      * 在控制器类中将数据分配到页面上并循环展示
      * 创建已读方法，在方法里(DatabaseNotification,$notify){$notify->markAsRead();并重新定向到文章详情页面}
+     * 锚链接 ：在Article.php类中定义getlink让地址栏有锚点
+     * 在评论展示页vue中用location.hash接取锚点 并将锚链接拼好 hdjs.scrollTo('body',location.hash,500, {queue:true});
      */
     public function toArray($notifiable)
     {
@@ -69,6 +71,8 @@ class CommentNotify extends Notification
             'user_name'=>$this->comment->user->name,//发表评论的用户的名字
             'article_id'=>$this->comment->article->id,//文章id
             'article_title'=>$this->comment->article->title,//文章名字
+            //'link'=>route('home.article.show',$this->comment->article) . '#comment' . $this->comment->id,
+            'link'=>$this->comment->article->getLink('#comment'.$this->comment->id)//评论锚链接
         ];
     }
 }

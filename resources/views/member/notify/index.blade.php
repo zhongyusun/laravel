@@ -37,12 +37,13 @@
                                                         <div class="avatar avatar-sm">
                                                             <img src="{{$notification['data']['user_icon']}}" alt="..." class="avatar-img rounded-circle">
                                                         </div>
-
                                                     </div>
                                                     <div class="col ml--2">
-
                                                         <!-- Content -->
                                                         <div class="small text-muted">
+                                                            @if($notification->read_at)
+                                                                <i class="badge badge-soft-primary">已读</i>
+                                                            @endif
                                                             <strong class="text-body">{{$notification['data']['user_name']}}</strong> 评论了
                                                             <strong class="text-body">{{$notification['data']['article_title']}}</strong>
                                                         </div>

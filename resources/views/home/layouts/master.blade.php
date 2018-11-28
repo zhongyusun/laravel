@@ -34,10 +34,10 @@
         </a>
 
         <!-- Form -->
-        <form class="form-inline mr-4 d-none d-lg-flex">
+        <form class="form-inline mr-4 d-none d-lg-flex" method="get" action="{{route('home.search')}}">
             <div class="input-group input-group-rounded input-group-merge" data-toggle="lists" data-lists-values='["name"]'>
                 <!-- Input -->
-                <input type="search" class="form-control form-control-prepended  dropdown-toggle search" data-toggle="dropdown" placeholder="龙王传说" aria-label="Search">
+                <input type="text" name="wd" class="form-control  form-control-prepended  dropdown-toggle search" data-toggle="dropdown" placeholder="龙王传说" aria-label="Search">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <i class="fe fe-search"></i>
@@ -194,12 +194,12 @@
 {{--底部--}}
 <div class="Footer">
     <div class="footer_nav">
-        <a rel="nofollow" target="_blank" href="http://www.17k.com/aboutus/">关于sun.edu</a>　|　
-        <a rel="nofollow" target="_blank" href="http://www.17k.com/aboutus/Cooperation.html">商务合作</a>　|　
-        <a target="_blank" href="http://www.17k.com/aboutus/link.html">友情链接</a>　|　
-        <a rel="nofollow" target="_blank" href="http://www.17k.com/Simple/contents/helpCenter/helpCenter.htm">帮助中心</a>　|　
-        <a rel="nofollow" target="_blank" href="http://www.17k.com/Simple/contents/login/Rdme.html">用户守则</a>　|　
-        <a target="_blank" href="http://www.17k.com/about/sitemap.html">网站地图</a>　|　
+        <a rel="nofollow" target="_blank" href="">关于sun.edu</a>　|　
+        <a rel="nofollow" target="_blank" href="">商务合作</a>　|　
+        <a target="_blank" href="">友情链接</a>　|　
+        <a rel="nofollow" target="_blank" href="">帮助中心</a>　|　
+        <a rel="nofollow" target="_blank" href="">用户守则</a>　|　
+        <a target="_blank" href="">网站地图</a>　|　
         <a rel="nofollow" target="_blank" href="http://www.17k.com/recruitment/index.html">诚聘精英</a>　|　
         <a rel="nofollow" target="_blank" href="http://code.17k.com/">桀骜开源</a>
     </div>

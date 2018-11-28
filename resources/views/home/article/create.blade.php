@@ -51,7 +51,7 @@
 
                     <!-- Buttons -->
                     <button  class="btn btn-block btn-primary">
-                        保存修改
+                        发表文章
                     </button>
 
                 </form>

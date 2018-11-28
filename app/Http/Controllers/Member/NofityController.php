@@ -27,6 +27,6 @@ class NofityController extends Controller
     public function show(DatabaseNotification $notify){
         $notify->markAsRead();
         //跳转到文章详情页,页面自动滚动到对应的评论
-        return redirect(route('home.article.show',$notify['data']['article_id']));
+        return redirect($notify['data']['link']);
     }
 }
