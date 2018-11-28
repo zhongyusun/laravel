@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollectsTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCollectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('collects', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('user_id')->index()->default(0)->comment('用户id');
-            $table->unsignedInteger('collect_id')->index()->default(0)->comment('文章id,');
-            $table->string('collect_type')->index()->default('')->comment('收藏 类型');
+            $table->unsignedInteger('like_id')->index()->default(0)->comment('文章id');
+            $table->string('like_type')->index()->default('')->comment('点赞/评论 类型');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateCollectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collects');
+        Schema::dropIfExists('likes');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Comments;
+use App\Observers\CommentObserver;
 use App\Observers\UserObserver;
 use App\User;
 use Carbon\Carbon;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale('zh');
         /*******注册观察者****/
         User::observe(UserObserver::class);
+        Comments::observe(CommentObserver::class);
         /****注册观察者******/
     }
 

@@ -24,7 +24,7 @@ class CollectController extends Controller
 //        dd($model);
         //获得当前文章的所有收藏模型数据
         //dd($model->collect->all());
-        //返回  zan 模型  或者 null
+        //返回  collect 模型  或者 null
         //dd($model->collect->where('user_id',auth()->id())->first());
         if ($collect=$model->collect->where('user_id',auth()->id())->first()){
             //执行删除

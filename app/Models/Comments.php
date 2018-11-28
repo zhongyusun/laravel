@@ -19,4 +19,15 @@ class Comments extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    //评论关联通知
+    public function article(){
+        return $this->belongsTo(Article::class);
+    }
+
+    //点赞关联
+    public function like(){
+        //第一个参数关联模型,第二个参数跟数据迁移  like_id  like_type
+        return $this->morphMany(Like::class,'like');
+    }
 }

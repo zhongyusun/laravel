@@ -5,7 +5,6 @@
             @include('member.layouts.menu')
             <div class="col-sm-9">
                 <div class="row justify-content-center  __web-inspector-hide-shortcut__">
-
                     <input type="hidden" name="_token" value="meB8V3w51M6Fv2HJh2u70JUOzWk9CeaN2PFfdCeA">            <input type="hidden" name="_method" value="PUT">            <div class="card">
                         <div class="card-header">
                             <h4>头像设置</h4>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Exceptions\UploadException;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Like;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,33 +24,7 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
+    //个人文章展示
     public function show(User $user,Request $request)
     {
         //接受category参数
@@ -69,12 +44,7 @@ class UserController extends Controller
         return view('member.user.show',compact('user','articles','categories'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(User $user,Request $request)
     {
         $this->authorize('isMine',$user);
@@ -149,5 +119,28 @@ class UserController extends Controller
         $followings=$user->fans()->paginate(10);
         //加载模板页面
         return view('member.user.my_following',compact('followings','user'));
+    }
+
+
+    //我的点赞
+    public function myLike(User $user,Request $request){
+        $type=$request->query('type');
+        //通过用户查找该用户的所有数据
+        //dd($type);
+
+        //dd($user->like()->where('like_type','App\Models\\'.ucfirst($type)));
+        $likesData=$user->like()->where('like_type','App\Models\\'.ucfirst($type))->paginate(10);
+        //dd($likesData);
+        return view('member.user.my_like_'.$type,compact('user','likesData'));
+    }
+
+    //我的收藏
+    public function Mycollect(User $user,Request $request){
+        $type=$request->query('type');
+        //通过用户查找该用户所有的数据
+        //dd($user->collect->where('collect_type','App\Models\\'.ucfirst($type)));
+        $collectData=$user->collect()->where('collect_type','App\Models\\'.ucfirst($type))->paginate(2);
+
+        return view('member.user.my_collect_'.$type,compact('user','collectData'));
     }
 }

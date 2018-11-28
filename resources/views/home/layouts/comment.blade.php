@@ -27,7 +27,8 @@
 
                                 <!-- Time -->
                                 <time class="comment-time">
-                                    👍 2 | @{{ v.created_at }}
+                                    <a href="" @click.prevent="like(v)" class="text-muted">👍 @{{v.like_num}}</a>
+                                    | @{{ v.created_at }}
                                 </time>
 
                             </div>
@@ -125,6 +126,16 @@
                             editormd.replaceSelection("");
                         })
                     },
+                    //点赞
+                    like(v){
+                       let url='/home/like/make?type=comments&id='+v.id;
+                       //console.log(url);
+                        axios.get(url).then((response)=>{
+                            //console.log(response.data.num);
+                            v.like_num=response.data.like_num
+                            //console.log(v);
+                        })
+                    }
                     @endauth
                 },
 
@@ -166,7 +177,7 @@
                             //console.log(this.comments);
                             this.comments.forEach((v, k) => {
                                 v.content = md.render(v.content)
-                            })
+                            });
                             //console.log(this.comments);
                             //代码高亮
                             $(document).ready(function () {

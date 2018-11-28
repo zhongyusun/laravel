@@ -5,19 +5,21 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Collect extends Model
+class Like extends Model
 {
-
     protected $fillable=[
         'user_id'
     ];
 
+    //关联用户
     public function user(){
-       return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    //关联 多态 模型
+    //多态关联模型 article
     public function belongsModel(){
-        return $this->morphTo('collect');
+        return $this->morphTo('like');
     }
+
+
 }

@@ -1,8 +1,8 @@
-<div class="col-sm-3">
+<div class="col-sm-3" id="left_menu">
     <div class="card">
         <div class="card-block text-center pt-5">
             <div class="avatar avatar-xxl">
-                <a href="{{route('member.user.show',$user)}}">
+                <a href="{{route('member.user.edit',[$user,'type'=>'icon'])}}">
                     <img src="{{$user->icon}}" class="avatar-img rounded-circle">
                 </a>
             </div>
@@ -36,12 +36,6 @@
         <div class="card-body text-center pt-1 pb-2">
                 @can('isMine',$user)
                 <div class="nav flex-column nav-pills ">
-                    <a href="{{route('member.user.edit',[$user,'type'=>'icon'])}}" class="nav-link text-muted {{active_class(if_route(['member.user.edit']) && if_query('type','icon'),'active','')}}">
-                        修改头像
-                    </a>
-                </div>
-
-                <div class="nav flex-column nav-pills ">
                     <a href="{{route('member.user.edit',[$user,'type'=>'password'])}}" class="nav-link text-muted {{active_class(if_route(['member.user.edit']) && if_query('type','password'),'active','')}}">
                         修改密码
                     </a>
@@ -49,6 +43,11 @@
                 <div class="nav flex-column nav-pills ">
                     <a href="{{route('member.user.edit',[$user,'type'=>'name'])}}" class="nav-link text-muted {{active_class(if_route(['member.user.edit']) && if_query('type','name'),'active','')}}">
                         修改昵称
+                    </a>
+                </div>
+                <div class="nav flex-column nav-pills ">
+                    <a href="{{route('member.my_collect',[$user,'type'=>'article'])}}" class="nav-link text-muted {{active_class(if_route(['member.my_collect']))}}">
+                        我的收藏
                     </a>
                 </div>
                 @endcan
@@ -59,7 +58,7 @@
                 <a href="{{route('member.my_following',$user)}}" class="nav-link text-muted {{active_class(if_route(['member.my_following']))}}">
                     关注列表
                 </a>
-                <a href="" class="nav-link text-muted">
+                <a href="{{route('member.notify',$user)}}" class="nav-link text-muted {{active_class(if_route(['member.notify']))}}">
                     消息中心
                 </a>
             </div>
@@ -68,9 +67,12 @@
     <div class="card">
         <div class="card-body text-center">
             <div class="nav flex-column nav-pills">
-                <a href="" class="nav-link
-                                    text-muted">
-                    帖子管理
+                <a href="{{route('member.my_like',[$user,'type'=>'article'])}}" class="nav-link text-muted {{active_class(if_route(['member.my_like']), 'active', '')}}">
+                    @can('isMine',$user)
+                        我的点赞
+                    @else
+                        他的点赞
+                    @endcan
                 </a>
                 <a href="" class="nav-link
                                     text-muted">
@@ -86,7 +88,7 @@
 </div>
 @push('css')
     <style>
-        .active{
+        #left_menu .active{
             color: white !important;
         }
     </style>

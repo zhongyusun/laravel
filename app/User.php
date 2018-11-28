@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Models\Article;
 use App\Models\Attachment;
+use App\Models\Collect;
+use App\Models\Like;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,5 +49,15 @@ class User extends Authenticatable
     //获取关注者
     public function following(){
         return $this->belongsToMany(User::class,'follows','following_id','user_id');
+    }
+
+    //关联 收藏 模型
+    public function collect(){
+        return $this->hasMany(Collect::class);
+    }
+
+    //用户关联like
+    public function like(){
+        return $this->hasMany(Like::class);
     }
 }

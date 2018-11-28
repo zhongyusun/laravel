@@ -29,6 +29,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
     Route::resource('comment','CommentController');
     //收藏
     Route::get('collect/make','CollectController@make')->name('collect/make');
+    //点赞
+    Route::get('like/make','LikeController@make')->name('like/make');
 });
 
 
@@ -42,6 +44,14 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
     Route::get('my_fans/{user}','UserController@myFens')->name('my_fans');
     //关注页面
     Route::get('my_following/{user}','UserController@myFollowing')->name('my_following');
+    //我的收藏
+    Route::get('my_collect/{user}','UserController@myCollect')->name('my_collect');
+    //我的点赞
+    Route::get('my_like/{user}','UserController@myLike')->name('my_like');
+    //我的所有通知
+    Route::get('notify/{user}','NofityController@index')->name('notify');
+    //标志已读
+    Route::get('notify/show/{notify}','NofityController@show')->name('notify.show');
 });
 
 
