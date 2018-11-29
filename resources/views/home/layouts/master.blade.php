@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="description" content="{{hd_config('base.description')}}{{hd_config('base.keyword')}}">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Libs CSS -->
 
@@ -20,7 +20,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/assets')}}/css/theme.min.css">
     @stack('css')
-    <title>桀骜</title>
+    <title>{{hd_config('base.title')}}</title>
 </head>
 <body>
 
@@ -186,9 +186,9 @@
 
     </div> <!-- / .container -->
 </nav>
-
 {{--内容--}}
 {{--占位，在子集里面写--}}
+
 @yield('content')
 
 {{--底部--}}
@@ -210,7 +210,7 @@
         <a target="_blank" href="http://mm.17k.com/">言情小说</a>等在线小说阅读网站，未经许可不得擅自转载本站内容。<br>
         桀骜小说网所收录免费小说作品、社区话题、书友评论、用户上传文字、图片等其他一切内容均属用户个人行为，与桀骜小说网无关。--桀骜权利声明。<br>
 
-        <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">京ICP证010590号</a>　京ICP备09030667号-5　　　京网文[2014]0917-217号　　新出审字[2009]366号　<br>
+        <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/">{{hd_config('base.icp')}}</a>　京ICP备09030667号-5　　　京网文[2014]0917-217号　　新出审字[2009]366号　<br>
         <a rel="nofollow" target="_blank" href="http://cms.17k.com/news/182.html">新出网许（京）字045号</a>　北京市公安局备案号码：123492883780<br>
         违法和不良信息举报电话：17638171383 举报邮箱：2460245313@qq.com</p>
     <p class="linkimg">

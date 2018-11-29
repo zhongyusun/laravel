@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(){
         //获取所有的动态
         //$activities = Activity::all();
-        $articles = Activity::latest()->paginate(10);
+        $articles = Activity::latest()->paginate(5);
         //dd(111);
         //dd($activities);
         //foreach ($activities as $activity){
@@ -38,7 +38,7 @@ class HomeController extends Controller
 
 
         //不考率分类筛选
-        $articles=Article::search($wd)->get();
+        $articles=Article::search($wd)->paginate(10);
 
         //return view('home.search',compact('articles','categories'));
         return view('home.search.search',compact('articles'));

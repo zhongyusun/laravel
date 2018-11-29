@@ -131,7 +131,7 @@
             //后台链接
             url: '{{route('util.code.send')}}',
             //验证码等待发送时间
-            timeout: 60,//（可不设置）
+            timeout: '{{hd_config('code.code_expires')}}',//（可不设置）
             //表单，手机号或邮箱的INPUT表单
             input: '[name="email"]',
             //发送前执行的动作，返回true时将发送（可不设置）

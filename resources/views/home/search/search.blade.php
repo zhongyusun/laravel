@@ -100,7 +100,7 @@
                                 @endforeach
                             </ul>
                         </div>
-{{--                        {{$articles->links()}}--}}
+                        {{$articles->links()}}
                     </div>
 
                 </div>
