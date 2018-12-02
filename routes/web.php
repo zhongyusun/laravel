@@ -103,3 +103,15 @@ Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin
     Route::post('config/update/{name}','ConfigController@update')->name('config/update');
 
 });
+
+
+//微信管理
+Route::group(['prefix'=>'wechat','namespace'=>'WeChat','as'=>'wechat'],function (){
+
+    //菜单管理
+    Route::resource('button','ButtonController');
+    //微信通信地址
+    Route::get('api/handler','ApiController@handler')->name('api.handler');
+    Route::get('button/push/{button}','ButtonController@push')->name('button.push');
+
+});

@@ -11,7 +11,6 @@ class CodeController extends Controller
 {
     //发送验证码
     public function send(Request $request){
-
         //获得所有请求的数据
         //dd($request->all());
         //dd($request->username);
@@ -24,7 +23,7 @@ class CodeController extends Controller
         //dd($user->toarray());
         //需要创建通知类：(消息通知）
             $user->notify(new RegisterNotify($code));
-
+            //dd(111);
         //将验证码存进session中
         session()->put('code',$code);
 

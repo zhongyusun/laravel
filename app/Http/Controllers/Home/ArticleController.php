@@ -70,12 +70,7 @@ class ArticleController extends Controller
         return view('home.article.create',compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request,\App\Models\Article $article)
     {
         //获取当前用户的id
