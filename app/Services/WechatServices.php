@@ -36,7 +36,7 @@ class WechatServices{
     }
 
     //添加数据
-    public function ruleStore(){
+    public function ruleStore($type){
         //打印所有的数据
         //dd(request()->all());
         $post=request()->all();
@@ -52,7 +52,7 @@ class WechatServices{
             'name.required'=>'规则名字不能为空'
         ])->validate();
         //执行规则表的添加
-        $ruleModel=Rule::create(['name'=>$rule['name']]);
+        $ruleModel=Rule::create(['name'=>$rule['name'],'type'=>$type]);
         //dd($ruleModel);
         //关键词表添加
         foreach ($rule['keywords'] as $value){

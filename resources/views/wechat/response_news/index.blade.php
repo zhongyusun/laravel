@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="container-fluid">
+
         <!-- Header -->
         <div class="header mt-md-2">
             <div class="header-body">
@@ -8,7 +9,7 @@
                     <div class="col">
                         <!-- Title -->
                         <h2 class="header-title">
-                            微信基本回复
+                            图文回复
                         </h2>
 
                     </div>
@@ -20,13 +21,13 @@
                         <!-- Nav -->
                         <ul class="nav nav-tabs nav-overflow header-tabs">
                             <li class="nav-item">
-                                <a href="{{route('wechatresponse_text.index')}}" class="nav-link active">
+                                <a href="{{route('wechatresponse_news.index')}}" class="nav-link active">
                                     回复列表
                                 </a>
 
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('wechatresponse_text.create')}}" class="nav-link ">
+                                <a href="{{route('wechatresponse_news.create')}}" class="nav-link ">
                                     添加回复
                                 </a>
                             </li>
@@ -38,7 +39,8 @@
 
 
         <div class="card">
-            <div class="table-responsive mb-0" data-toggle="lists" data-lists-values="[&quot;goal-project&quot;, &quot;goal-status&quot;, &quot;goal-progress&quot;, &quot;goal-date&quot;]">
+            <div class="table-responsive mb-0" data-toggle="lists"
+                 data-lists-values="[&quot;goal-project&quot;, &quot;goal-status&quot;, &quot;goal-progress&quot;, &quot;goal-date&quot;]">
                 <table class="table table-sm table-nowrap card-table">
                     <thead>
                     <tr>
@@ -49,21 +51,21 @@
                     </tr>
                     </thead>
                     <tbody class="list">
-                    @foreach($filed as $v)
+                    @foreach($field as $v)
                         <tr>
-                            {{--{{dd($v)}}--}}
                             <td>{{$v['id']}}</td>
                             <td>{{$v->rule->name}}</td>
-
                             {{--dump($v->rule->keyword->pluck('key')->toArray());--}}
                             <td>
                                 {{implode(',',$v->rule->keyword->pluck('key')->toArray())}}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="First group">
-                                    <a href="{{route('wechatresponse_text.edit',$v)}}" class="btn btn-white">编辑</a>
+
+                                    <a href="{{route('wechatresponse_news.edit',$v)}}" class="btn btn-white">编辑</a>
+
                                     <button onclick="del(this)" type="button" class="btn btn-white">删除</button>
-                                    <form action="{{route('wechatresponse_text.destroy',$v)}}" method="post">
+                                    <form action="{{route('wechatresponse_news.destroy',$v)}}" method="post">
                                         @csrf  @method('DELETE')
                                     </form>
                                 </div>
@@ -99,4 +101,3 @@
         }
     </script>
 @endpush
-

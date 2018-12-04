@@ -112,13 +112,15 @@ Route::group(['prefix'=>'wechat','namespace'=>'WeChat','as'=>'wechat'],function 
     //菜单管理
     Route::resource('button','ButtonController');
     //微信通信地址
-    Route::get('api/handler','ApiController@handler')->name('api.handler');
-    Route::get('button/push/{button}','ButtonController@push')->name('button.push');
-    //基本文本回复
-    Route::resource('response_text','ResponseTextController');
+    Route::any('api/handler','ApiController@handler')->name('api.handler');
 
+    Route::get('button/push/{button}','ButtonController@push')->name('button.push');
+    //文本回复
+    Route::resource('response_text','ResponseTextController');
+    //图文回复
+    Route::resource('response_news','ResponseNewsController');
+    //基本回复
+    Route::resource('response_base','ResponseBaseController');
 });
 
 
-//背景图
-Route::resource('lunbo','Home\LunboController');

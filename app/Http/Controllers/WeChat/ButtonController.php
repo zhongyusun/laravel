@@ -10,6 +10,12 @@ use App\Http\Controllers\Controller;
 
 class ButtonController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin.auth',[
+            'except'=>[],
+        ]);
+    }
 
     public function index()
     {
@@ -41,13 +47,15 @@ class ButtonController extends Controller
     public function edit(Button $button)
     {
         //dd($button);
-        return view('wechat.button.create',compact('button'));
+        return view('wechat.button.edit',compact('button'));
     }
 
 
     public function update(Request $request, Button $button)
     {
-        $button->update($request->all());
+        $data = $request->all();
+        $data['status'] = 0;
+        $button->update($data);
         return redirect()->route('wechatbutton.index')->with('success','菜单编辑成功');
     }
 

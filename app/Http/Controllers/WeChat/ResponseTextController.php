@@ -36,7 +36,7 @@ class ResponseTextController extends Controller
         DB::beginTransaction();
         //dd($request->all());
         //dd($request->data);
-        $rule=$wechatServices->ruleStore();
+        $rule=$wechatServices->ruleStore('text');
         //添加回复内容
         ResponseText::create([
            'content'=>$request['data'],

@@ -12,4 +12,6 @@ class ResponseText extends Model
     public function rule(){
         return $this->belongsTo(Rule::class);
     }
+
+//    public function
 }

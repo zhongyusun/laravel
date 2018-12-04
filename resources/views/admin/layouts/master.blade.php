@@ -125,6 +125,16 @@
                                     文本回复
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('wechatresponse_news.index')}}" class="nav-link">
+                                    图文回复
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('wechatresponse_base.create')}}" class="nav-link">
+                                    基本回复
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

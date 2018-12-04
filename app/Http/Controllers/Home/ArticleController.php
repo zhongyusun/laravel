@@ -77,7 +77,7 @@ class ArticleController extends Controller
         //dd(auth()->id());
         $article->title=$request->title;
         $article->category_id=$request->category_id;
-        $article->content=$request->content;
+        $article->content=$request['content'];
         $article->user_id=auth()->id();
         //dd($artcle);
         $article->save();
