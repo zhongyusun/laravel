@@ -22,6 +22,8 @@ class ConfigController extends Controller
 
     //数据的添加/更新
     public function update($name,Request $request){
+        //dd(1);
+        //dd($request->all());
         //updateOrCreate 执行更新或者添加
         //updateOrCreate手册位置: Eloquent ORM-->快读入门
         $res=Config::updateOrCreate(

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Libs CSS -->
     <link rel="stylesheet" href="{{asset('org/assets')}}/fonts/feather/feather.min.css">
     <link rel="stylesheet" href="{{asset('org/assets')}}/libs/highlight/styles/vs2015.min.css">
@@ -67,6 +67,11 @@
                                     栏目管理
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.flash.index')}}" class="nav-link" >
+                                    轮播图管理
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -113,6 +118,11 @@
                             <li class="nav-item">
                                 <a href="{{route('wechatbutton.index')}}" class="nav-link">
                                     微信菜单
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('wechatresponse_text.index')}}" class="nav-link">
+                                    文本回复
                                 </a>
                             </li>
                         </ul>
@@ -173,6 +183,7 @@
 ================================================== -->
 @include('layouts.hdjs')
 @include('layouts.message')
+
 <script>
     require(['bootstrap'])
 </script>

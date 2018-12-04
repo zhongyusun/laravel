@@ -101,7 +101,8 @@ Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin
     Route::resource('category','CategoryController');
     Route::get('config/edit/{name}','ConfigController@edit')->name('config/edit');
     Route::post('config/update/{name}','ConfigController@update')->name('config/update');
-
+    //轮播图
+    Route::resource('flash','FlashController');
 });
 
 
@@ -113,5 +114,11 @@ Route::group(['prefix'=>'wechat','namespace'=>'WeChat','as'=>'wechat'],function 
     //微信通信地址
     Route::get('api/handler','ApiController@handler')->name('api.handler');
     Route::get('button/push/{button}','ButtonController@push')->name('button.push');
+    //基本文本回复
+    Route::resource('response_text','ResponseTextController');
 
 });
+
+
+//背景图
+Route::resource('lunbo','Home\LunboController');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Flash;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 
@@ -13,12 +14,15 @@ class HomeController extends Controller
         //获取所有的动态
         //$activities = Activity::all();
         $articles = Activity::latest()->paginate(5);
+        //获取数据库中的数据，并在页面上循环
+        $datas=Flash::all();
+        //dd($datas);
         //dd(111);
         //dd($activities);
         //foreach ($activities as $activity){
             //dump($activities);
         //}
-        return view('home.home',compact('articles'));
+        return view('home.home',compact('articles','datas'));
     }
 
     //搜索
