@@ -12,7 +12,8 @@
 
             <!-- Content -->
             <div class="small text-muted">
-                <a href="{{route('member.user.show',$article->causer)}}"> <strong class="text-body">{{$article->causer->name}}</strong></a>
+                <a href="{{route('member.user.show',$article->causer)}}">
+                    <strong class="text-body">{{$article->causer->name}}</strong></a>
                 @if($article->description=='created')
                 发布了
                 @else

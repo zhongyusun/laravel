@@ -88,7 +88,7 @@
                             <div class="row ">
                                 <div class="col-12">
 
-                                    <form method="post" action="{{route('wechatbutton.store')}}">
+                                    <form method="post" action="{{route('wechatbutton.update',$button)}}">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="form-group">
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="card">
 
-                                            @csrf
+                                            @csrf   @method('PUT')
 
                                             <div class="card-body">
 

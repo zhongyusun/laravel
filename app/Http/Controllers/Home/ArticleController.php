@@ -75,6 +75,15 @@ class ArticleController extends Controller
     {
         //获取当前用户的id
         //dd(auth()->id());
+        if ($request->title==''){
+            return redirect()->back()->with('danger','文章标题不能为空');
+        }
+        if ($request->category_id==''){
+            return redirect()->back()->with('danger','文章分类不能为空');
+        }
+        if ($request['content']==''){
+            return redirect()->back()->with('danger','文章内容不能为空');
+        }
         $article->title=$request->title;
         $article->category_id=$request->category_id;
         $article->content=$request['content'];

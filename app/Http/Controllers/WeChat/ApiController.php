@@ -92,12 +92,13 @@ class ApiController extends Controller
 
     //根据关键词回复内容
     private function keyWordToFindResponse($instance,$content){
+        //检测是否 key 的值是否和关键词一致，
         if ($keyword=Keyword::where('key',$content)->first()){
 
             //通过关键词模型关联 rule
             $rule=$keyword->rule;
 
-            //如果能找到对应的关键词
+            //检测
             if ($rule['type']=='text'){
                 //文本消息
                 //获取所有能对应的回复语

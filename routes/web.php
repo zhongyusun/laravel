@@ -123,4 +123,11 @@ Route::group(['prefix'=>'wechat','namespace'=>'WeChat','as'=>'wechat'],function 
     Route::resource('response_base','ResponseBaseController');
 });
 
+//权限管理
+Route::group(['prefix'=>'role','namespace'=>'Role','as'=>'role.'],function (){
+    //权限管理
+    Route::get('permission/index','PermissionController@index')->name('permission.index');
+    //角色管理资源路由
+    Route::resource('role','RoleController');
 
+});
