@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers\Role;
 
+use App\Models\Module;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin.auth', [
+            'except' => [],
+        ]);
+    }
 
     public function index()
     {
@@ -33,16 +41,27 @@ class RoleController extends Controller
         return redirect()->route('role.role.index')->with('success','添加成功');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Spatie\Permission\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
+
+
+    //展示角色设置权限的模板页面
     public function show(Role $role)
     {
-
+        ////获取所有模块以及权限,获取的 modules 所有数据
+        $modules=Module::all();
+        //dd($role);
+        return view('role.role.set_permission',compact('role','modules'));
     }
+    //设置角色权限
+    public function setrolepermission(Role $role,Request $request){
+        //给角色设置权限
+        //dd($role->toArray());
+        //dd($request->all());
+        $role->syncPermissions($request->permissions);
+        //dd($qq);
+        return back()->with('success','操作成功');
+    }
+
+
 
 
     public function edit(Role $role)
@@ -51,13 +70,7 @@ class RoleController extends Controller
         return view('role.role.edit',compact('role'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Spatie\Permission\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Role $role)
     {
 
@@ -66,12 +79,7 @@ class RoleController extends Controller
         return redirect()->route('role.role.index')->with('success','编辑成功');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Spatie\Permission\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Role $role)
     {
         //dd($role);

@@ -144,9 +144,8 @@
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="{{route('member.user.show',auth()->user())}}" class="dropdown-item">{{auth()->user()->name}}个人中心</a>
-                        <a href="" class="dropdown-item">设置</a>
-                        @can('view',auth()->user())
-                            {{--参数一：那个方法  二：类--}}
+                        @can('Admin-admin-index');
+                        {{--参数一：那个方法  二：类--}}
                             <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
                         @endcan
                         <hr class="dropdown-divider">

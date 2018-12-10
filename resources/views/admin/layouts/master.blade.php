@@ -56,43 +56,71 @@
                         <i class="fe fe-home"></i>首页
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
                         <i class="fe fe-file"></i> 文章系统
                     </a>
                     <div class="collapse" id="sidebarPages">
+                        @role('peiqi')
                         <ul class="nav nav-sm flex-column">
+                            @can('Admin-category')
                             <li class="nav-item">
                                 <a href="{{route('admin.category.index')}}" class="nav-link" >
                                     栏目管理
                                 </a>
                             </li>
+                            @endcan
+                            @can('Admin-flash')
                             <li class="nav-item">
                                 <a href="{{route('admin.flash.index')}}" class="nav-link" >
                                     轮播图管理
                                 </a>
                             </li>
+                            @endcan
                         </ul>
+                        @else
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <p class="nav-link">暂无权限</p>
+                                </li>
+                            </ul>
+                        @endrole
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#sidebarLayoutes" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fe fe-user"></i> 权限管理
                     </a>
                     <div class="collapse " id="sidebarLayoutes">
+                        @role('qwe')
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{route('admin.config/edit',['name'=>'base'])}}" class="nav-link">
-                                    用户管理
-                                </a>
+                                @can('Role-role')
                                 <a href="{{route('role.role.index')}}" class="nav-link">
                                     角色管理
                                 </a>
+                                @endcan
+                                @can('Role-permission')
                                 <a href="{{route('role.permission.index')}}" class="nav-link">
                                     权限列表
                                 </a>
+                                @endcan
+                                @can('Role-user')
+                                <a href="{{route('role.user.index')}}" class="nav-link">
+                                    用户管理
+                                </a>
+                                @endcan
                             </li>
                         </ul>
+                        @else
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <p class="nav-link">暂无权限</p>
+                                </li>
+                            </ul>
+                        @endrole
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -100,11 +128,14 @@
                         <i class="fe fe-layout"></i> 网站配置
                     </a>
                     <div class="collapse " id="sidebarLayouts">
+                        {{--@role()--}}
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
+                                {{--@can()--}}
                                 <a href="{{route('admin.config/edit',['name'=>'base'])}}" class="nav-link">
                                     基础配置
                                 </a>
+                                {{--@endcan--}}
                                 <a href="{{route('admin.config/edit',['name'=>'upload'])}}" class="nav-link">
                                     上传配置
                                 </a>
@@ -122,6 +153,13 @@
                                 </a>
                             </li>
                         </ul>
+                        {{--@else--}}
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <p class="nav-link">暂无权限</p>
+                                </li>
+                            </ul>
+                        {{--@endrole--}}
                     </div>
                 </li>
                 <li class="nav-item dropdown">

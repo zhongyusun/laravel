@@ -19,8 +19,8 @@ class AdminAuthMiddleware
         //dd(auth()->check());
         //auth()->check();检测是否登录
         //dd(auth()->user()->is_admin);//检测是否为管理员
-        if(!auth()->check() || auth()->user()->is_admin != 1){
-            return redirect()->route('/');
+        if(!auth()->check() || !auth()->user()->can('Admin-admin-index')){
+            return redirect()->route('home');
         }
         return $next($request);
     }

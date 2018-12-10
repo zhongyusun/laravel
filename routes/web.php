@@ -129,5 +129,10 @@ Route::group(['prefix'=>'role','namespace'=>'Role','as'=>'role.'],function (){
     Route::get('permission/index','PermissionController@index')->name('permission.index');
     //角色管理资源路由
     Route::resource('role','RoleController');
-
+    //给角色添加权限
+    Route::post('role/set_role_permission/{role}','RoleController@setrolepermission')->name('role.setrole_permission');
+    //用户管理
+    Route::get('user/set_role_create/{user}','UserController@setrolecreate')->name('user.setrole.create');
+    Route::get('user/index','UserController@index')->name('user.index');
+    Route::post('user/set_role_store/{user}','UserController@setrolestore')->name('user.setrolestore');
 });

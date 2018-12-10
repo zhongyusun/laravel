@@ -59,7 +59,7 @@
                             <td>{{$role['guard_name']}}</td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
-                                    <a href="http://laravel-test.ishilf.com/role/assignPermission/1" class="btn btn-white">设置权限</a>
+                                    <a href="{{route('role.role.show',$role['id'])}}" class="btn btn-white">设置权限</a>
                                     <a href="{{route('role.role.edit',$role['id'])}}" class="btn btn-white">编辑</a>
                                     <button type="button" onclick="del(this)" class="btn btn-white">删除</button>
                                     <form action="{{route('role.role.destroy',$role['id'])}}" method="post">

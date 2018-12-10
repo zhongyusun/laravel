@@ -10,35 +10,24 @@ use App\Http\Controllers\Controller;
 //控制器中资源控制器
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    //文章类别的分类
     public function index()
     {
-//        $categories = Category::all();//获取categories表所有数据
-        $categories = Category::paginate(1);//分页
+
+        //$categories = Category::all();//获取categories表所有数据
+        $categories = Category::paginate(10);//分页
         //dd($categories);
         return view('admin.category.index',compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //dd($request);
