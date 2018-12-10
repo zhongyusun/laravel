@@ -73,6 +73,7 @@ class ArticleController extends Controller
 
     public function store(Request $request,\App\Models\Article $article)
     {
+        //dd(1);
         //获取当前用户的id
         //dd(auth()->id());
         if ($request->title==''){
@@ -138,7 +139,7 @@ class ArticleController extends Controller
         $this->authorize('update',$article);
         $article->title = $request->title;
         $article->category_id = $request->category_id;
-        $article->content = $request->content;
+        $article->content = $request['content'];
         // 防止作者被更改
         //$article->user_id = auth()->id();
         $article->save();

@@ -10,6 +10,11 @@ class FlashController extends CommonController
 {
     public function flashs(){
         //获取所有轮播图数据
-        return $this->response->array(Flash::all());
+        //return $this->response->array(Flash::all());
+        $limit = request()->query('limit',10);
+        //dd($limit);
+
+        return $this->response->array(Flash::limit($limit)->get());
+
     }
 }
